@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #101014;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+    height: 75px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #17171e;
+    border-bottom: 1px solid #292932;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #00D4FF;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #c6c6cf;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #9B5DE5;
+}
+
+.nav-user {
+    background: #292932;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 13px;
+}
+
+.nav-user a {
+    color: #00D4FF;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.flash-messages {
+    padding: 10px 8%;
+}
+
+.flash {
+    padding: 12px 16px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.flash.error {
+    color: #ffd5d5;
+    background: #5a1d1d;
+}
+
+.flash.success {
+    color: #d7ffe0;
+    background: #1d4b2b;
+}
+
+.hero {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    padding: 60px 9%;
+    background:
+        linear-gradient(90deg, #101014 10%, rgba(16,16,20,.85) 55%, rgba(16,16,20,.3)),
+        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600')
+        center/cover;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    color: #9B5DE5;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #00D4FF;
+}
+
+.hero-text {
+    color: #c4c4cc;
+    line-height: 1.8;
+    max-width: 470px;
+    margin-bottom: 30px;
+}
+
+.main-btn, .recommend-btn {
+    display: inline-block;
+    background: #00D4FF;
+    color: #101014;
+    text-decoration: none;
+    border: none;
+    border-radius: 7px;
+    padding: 15px 23px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-btn:hover, .recommend-btn:hover {
+    background: #9B5DE5;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.search-section, .recommend-section,
+.movies-section, .favorites-section {
+    padding: 55px 8%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.search-section p, .recommend-section p,
+.section-heading p {
+    color: #9999a5;
+    font-size: 14px;
+}
+
+.search-box {
+    max-width: 650px;
+    margin: 28px auto 0;
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #373742;
+    border-radius: 7px;
+    background: #202028;
+    color: white;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #00D4FF;
+}
+
+.search-box button {
+    background: #00D4FF;
+    color: #101014;
+    border: none;
+    padding: 0 25px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.genre-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.genre-btn {
+    padding: 11px 22px;
+    border: 1px solid #393943;
+    border-radius: 25px;
+    background: #202028;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.genre-btn:hover, .genre-btn.active {
+    background: #9B5DE5;
+    border-color: #9B5DE5;
+    color: white;
+}
+
+.recommend-btn {
+    margin-top: 5px;
+}
+
+.movies-section {
+    background: #15151b;
+}
+
+.section-heading {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+.movie-card {
+    background: #202028;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #30303a;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+    border-color: #00D4FF;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-info h3 {
+    font-size: 17px;
+    margin-bottom: 9px;
+}
+
+.movie-info p {
+    color: #aaaab4;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.movie-actions button {
+    flex: 1;
+    padding: 9px 5px;
+    border: none;
+    border-radius: 5px;
+    background: #34343e;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.movie-actions button:hover {
+    background: #9B5DE5;
+}
+
+.favorites-section {
+    background: #101014;
+}
+
+.empty-message {
+    color: #9999a5;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 30px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #202028;
+    border: 1px solid #9B5DE5;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+footer {
+    background: #191920;
+    text-align: center;
+    padding: 35px 15px;
+    color: #aaaab4;
+}
+
+footer h2 {
+    color: #00D4FF;
+}
+
+footer p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+@media(max-width: 700px) {
+    .navbar {
+        height: auto;
+        padding: 18px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 420px;
+        padding: 45px 7%;
+    }
+
+    .search-section, .recommend-section,
+    .movies-section, .favorites-section {
+        padding: 40px 5%;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .movie-card img {
+        height: 210px;
+    }
+}
+
+/* ---------- Added: auth / navigation fixes ---------- */
+.nav-user span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.nav-user a:first-child {
+    margin-left: 0;
+}
+
+.flash-messages {
+    padding: 10px 8% 0;
+}
+
+.flash-messages .flash {
+    margin-bottom: 8px;
+}

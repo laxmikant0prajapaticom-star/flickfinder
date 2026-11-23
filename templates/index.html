@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlickFinder | Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Flick<span>Finder</span></div>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="#movies">Explore Movies</a>
+            <a href="#recommend">Recommendations</a>
+            <a href="#favorites">My Favorites</a>
+        </nav>
+
+        <div class="nav-user" id="navUser">
+            {% if session.get('user_id') %}
+                <span>🎬 {{ session.get('user_name') }}</span>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages" role="status" aria-live="polite">
+        {% for category, message in messages %}
+            <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">YOUR PERSONAL MOVIE GUIDE</p>
+            <h1>Discover Movies<br>You'll <span>Love.</span></h1>
+            <p class="hero-text">
+                Find your next favourite movie with personalized
+                recommendations based on your interests.
+            </p>
+            <a href="#recommend" class="main-btn">
+                Explore Recommendations →
+            </a>
+        </div>
+    </section>
+
+    <section class="search-section" id="movies">
+        <h2>Find Your Movie</h2>
+        <p>Search movies or choose your favourite genre.</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput"
+                   placeholder="Search your favourite movie...">
+            <button id="searchBtn">Search</button>
+        </div>
+    </section>
+
+    <section class="recommend-section" id="recommend">
+        <h2>Choose Your Mood</h2>
+        <p>Select a genre to discover movies.</p>
+
+        <div class="genre-list">
+            <button class="genre-btn active" data-genre="All">All</button>
+            <button class="genre-btn" data-genre="Action">Action</button>
+            <button class="genre-btn" data-genre="Comedy">Comedy</button>
+            <button class="genre-btn" data-genre="Romance">Romance</button>
+            <button class="genre-btn" data-genre="Horror">Horror</button>
+            <button class="genre-btn" data-genre="Sci-Fi">Sci-Fi</button>
+            <button class="genre-btn" data-genre="Drama">Drama</button>
+            <button class="genre-btn" data-genre="Thriller">Thriller</button>
+            <button class="genre-btn" data-genre="Adventure">Adventure</button>
+        </div>
+
+        <button class="recommend-btn" id="recommendBtn">
+            ✨ Recommend Movies For Me
+        </button>
+    </section>
+
+    <section class="movies-section">
+        <div class="section-heading">
+            <div>
+                <h2 id="movieHeading">Popular Movies</h2>
+                <p>Handpicked movies for your entertainment.</p>
+            </div>
+        </div>
+
+        <div class="movie-grid" id="movieGrid">
+            <!-- Movies will appear here using JavaScript -->
+        </div>
+    </section>
+
+    <section class="favorites-section" id="favorites">
+        <h2>❤️ My Favourite Movies</h2>
+        <div class="movie-grid" id="favoriteGrid">
+            <p class="empty-message">Your favourite movies will appear here.</p>
+        </div>
+    </section>
+
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">×</button>
+            <div id="modalDetails"></div>
+        </div>
+    </div>
+
+    <footer>
+        <h2>FlickFinder</h2>
+        <p>Your next favourite movie is just one click away.</p>
+        <p>© 2026 FlickFinder | CSE Minor Project</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
